@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <float name="lbx2" value="708.0" />
+    <float name="lby3" value="136.0" />
+    <float name="lbx3" value="562.0" />
+    <int name="datas" value="4" />
+    <float name="ubx1" value="2342.0" />
+    <float name="uby2" value="987.0" />
+    <float name="ubx2" value="1086.0" />
+    <float name="uby3" value="201.0" />
+    <float name="uby0" value="1140.0" />
+    <float name="ubx0" value="542.0" />
+    <float name="uby1" value="760.0" />
+    <string name="name3">北门</string>
+    <float name="lbx0" value="281.0" />
+    <float name="lby1" value="669.0" />
+    <string name="name2">图文信息中心</string>
+    <string name="name1">东华大道</string>
+    <float name="lbx1" value="740.0" />
+    <float name="lby2" value="791.0" />
+    <string name="name0">一号学院楼</string>
+    <float name="ubx3" value="647.0" />
+    <float name="lby0" value="1001.0" />
+</map>
