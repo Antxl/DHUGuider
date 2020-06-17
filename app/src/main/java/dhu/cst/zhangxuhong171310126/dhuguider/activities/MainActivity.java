@@ -1,5 +1,6 @@
 package dhu.cst.zhangxuhong171310126.dhuguider.activities;
 
+import android.content.Intent;
 import android.graphics.PointF;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -52,13 +53,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
         initComponents();
         recorder=new Recorder(this);
         stt=new BDSpeechToText(getDeviceMac());
         lastRecordName=null;
         handler=new ResponseHandler();
         new LocationResourcesReader(this);
-        resorts=LocationResourcesReader.getResorts();
+        //resorts=LocationResourcesReader.getResorts();
     }
 
     private void initComponents()
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         searchBar.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                //TODO search and close search View
                 return false;
             }
             @Override
@@ -82,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
         searchBar.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
             public void onSearchViewShown() {
@@ -93,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         searchBar.setSubmitOnClick(true);
+
     }
 
     private String getDeviceMac() {
@@ -135,6 +140,12 @@ public class MainActivity extends AppCompatActivity {
             for (String s:rs)
                 sb.append(s);
             sb.append('\n');
+            //TODO search and close search View
         }
+    }
+
+    public void liulan(View v){
+        Intent intent = new Intent(MainActivity.this, LiulanActivity.class);
+        startActivity(intent);
     }
 }

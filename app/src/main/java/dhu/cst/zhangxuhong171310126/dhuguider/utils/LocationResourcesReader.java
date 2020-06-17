@@ -2,7 +2,6 @@ package dhu.cst.zhangxuhong171310126.dhuguider.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.PointF;
 
 import java.util.List;
 
@@ -40,11 +39,11 @@ public class LocationResourcesReader {
             int dataNum = pref.getInt("datas", 0);
             for (int i = 0; i < dataNum; i++) {
                 Location l = new Location();
-                l.setName(pref.getString("name" + i, null));
-                l.setLowerBound(new PointF(pref.getFloat("lbx" + i, -1),
-                        pref.getFloat("lby" + i,-1)));
-                l.setUpperBound(new PointF(pref.getFloat("ubx"+i,-1),
-                        pref.getFloat("uby"+i,-1)));
+                //l.setName(pref.getString("name" + i, null));
+                //l.setLowerBound(new PointF(pref.getFloat("lbx" + i, -1),
+                        //pref.getFloat("lby" + i,-1)));
+                //l.setUpperBound(new PointF(pref.getFloat("ubx"+i,-1),
+                        //pref.getFloat("uby"+i,-1)));
             }
         }
     }

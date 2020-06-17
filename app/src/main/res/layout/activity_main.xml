@@ -17,8 +17,7 @@
         app:tb_actionPadding="20dp"
         app:tb_centerGravity="center"
         app:tb_titleText="东华游"
-        app:tb_useThemeColor="true"/>
-
+        app:tb_useThemeColor="true" />
 
     <LinearLayout
         android:id="@+id/searchbanner"
@@ -60,6 +59,16 @@
             android:layout_height="match_parent"
             app:src="@drawable/dhu" />
 
+        <com.xuexiang.xui.widget.button.ButtonView
+            style="@style/ButtonView.Blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="开启浏览模式"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/bgimg"
+            tools:layout_editor_absoluteX="0dp"
+            android:onClick="liulan"/>
+
         <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
             android:id="@+id/cam_btn"
             android:layout_width="55dp"
@@ -70,6 +79,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:sb_shape_type="round" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

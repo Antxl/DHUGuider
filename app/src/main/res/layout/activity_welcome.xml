@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.WelcomeActivity">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--主页面-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/dhu1">
+
+            <TextView
+                android:id="@+id/arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="&lt;-------"
+                android:textColor="@color/white"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/arrow"
+                android:text="介绍 (拖动)"
+                android:textColor="@color/white"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/Dhu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="50sp"/>
+
+            <com.xuexiang.xui.widget.button.ButtonView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/Dhu"
+                style="@style/ButtonView.Blue"
+                android:layout_margin="70dp"
+                android:text=" 点击使用 "
+                android:textSize="30sp"
+                android:onClick="click_use"/>
+
+        </RelativeLayout>
+
+        <!--右侧菜单-->
+        <!--如果是两个抽屉那么layout_gravity属性值不能相同,即一左一右-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/logo"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_toRightOf="@+id/logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DHUGuider"
+                    android:textSize="35sp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <com.coorchice.library.SuperTextView
+                android:id="@+id/group_member"
+                android:layout_below="@+id/info"
+                android:layout_margin="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                app:stv_stroke_width="6dp"
+                app:stv_stroke_color="@color/skyblue"
+                app:stv_corner="30dp"
+                app:stv_right_top_corner="true"
+                app:stv_left_top_corner="true"
+                app:stv_left_bottom_corner="true"
+                app:stv_right_bottom_corner="true"
+                android:textSize="17sp"
+                android:text="\n      周欣宇  171310530\n      张旭宏  171310126"/>
+
+            <RelativeLayout
+                android:layout_below="@+id/group_member"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mylayout">
+
+                <TextView
+                    android:id="@+id/introduction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:textSize="20sp"
+                    android:text="功能介绍: Click"/>
+
+
+                <com.xuexiang.xui.widget.button.ButtonView
+                    android:id="@+id/btn1"
+                    android:layout_below="@+id/introduction"
+                    android:layout_width="90dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="20dp"
+                    style="@style/ButtonView.Blue"
+                    app:textStrokeWidth="2dp"
+                    app:textStrokeColor="@color/skyblue"
+                    app:textRadius="5dp"
+                    android:textSize="20sp"
+                    android:text="语音输入"
+                    android:onClick="click_btn1"/>
+
+                <com.xuexiang.xui.widget.button.ButtonView
+                    android:id="@+id/btn2"
+                    android:layout_toRightOf="@+id/btn1"
+                    android:layout_below="@+id/introduction"
+                    android:layout_width="90dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="20dp"
+                    style="@style/ButtonView.Blue"
+                    app:textStrokeWidth="2dp"
+                    app:textStrokeColor="@color/skyblue"
+                    app:textRadius="5dp"
+                    android:textSize="20sp"
+                    android:text="图像识别"
+                    android:onClick="click_btn2"/>
+
+                <com.xuexiang.xui.widget.button.ButtonView
+                    android:id="@+id/btn3"
+                    android:layout_below="@+id/btn1"
+                    android:layout_width="90dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="20dp"
+                    style="@style/ButtonView.Blue"
+                    app:textStrokeWidth="2dp"
+                    app:textStrokeColor="@color/skyblue"
+                    app:textRadius="5dp"
+                    android:textSize="20sp"
+                    android:text="Click"
+                    android:onClick="click_btn3"/>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
