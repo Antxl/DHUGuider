@@ -20,6 +20,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -53,4 +58,9 @@ dependencies {
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
     //引入SuperTextView
     implementation 'com.github.chenBingX:SuperTextView:v3.1.4'
+    //引入百度API
+    implementation group: 'com.baidu.aip', name: 'java-sdk', version: '4.12.0'
+    //引入拍照选择组件
+    implementation 'com.github.xuexiangjys.PictureSelector:picture-core:1.0.5'
+    implementation group: 'io.reactivex.rxjava2', name: 'rxandroid', version: '2.1.1'
 }

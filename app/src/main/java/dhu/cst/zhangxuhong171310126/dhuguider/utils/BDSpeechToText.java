@@ -58,60 +58,56 @@ public class BDSpeechToText {
 
     private void initAccessToken()
     {
-        new Thread(new Runnable(){
-            public void run() {
-                RequestBody body=new FormBody.Builder()
-                        .add("grant_type",grant_type)
-                        .add("client_id",client_id)
-                        .add("client_secret",client_secret)
-                        .build();//构建请求体
-                Request request=new Request.Builder()
-                        .url(tokenUrl)
-                        .post(body).build();//构建请求
-                new OkHttpClient().newCall(request).enqueue(new Callback(){//发送异步请求
-                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                        e.printStackTrace();
-                    }
+        new Thread(() -> {
+            RequestBody body=new FormBody.Builder()
+                    .add("grant_type",grant_type)
+                    .add("client_id",client_id)
+                    .add("client_secret",client_secret)
+                    .build();//构建请求体
+            Request request=new Request.Builder()
+                    .url(tokenUrl)
+                    .post(body).build();//构建请求
+            new OkHttpClient().newCall(request).enqueue(new Callback(){//发送异步请求
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    e.printStackTrace();
+                }
 
-                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                        if (response.isSuccessful()){
-                            AccessToken=new Gson()
-                                    .fromJson(response.body().string(),TokenResponse.class)
-                                    .access_token;
-                        }
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    if (response.isSuccessful()){
+                        AccessToken=new Gson()
+                                .fromJson(response.body().string(),TokenResponse.class)
+                                .access_token;
                     }
-                });
-            }
+                }
+            });
         }).start();
     }
 
     public void transfer(final File audio, final Handler responseHandler, final int megArc)
     {
-        new Thread(new Runnable() {
-            public void run() {
-                RequestBody body=MultipartBody.create(audio,MediaType.parse("audio/amr; rate=16000"));
-                Request request=new Request.Builder()
-                        .url(apiUrl+"?cuid="+WMac+"&token="+AccessToken)
-                        .post(body)
-                        .header("Content-Type","audio/amr; rate=16000")//make sure there is a space before rate
-                        .build();
-                new OkHttpClient().newCall(request).enqueue(new Callback(){//发送异步请求
-                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                        e.printStackTrace();
-                    }
+        new Thread(() -> {
+            RequestBody body=MultipartBody.create(audio,MediaType.parse("audio/amr; rate=16000"));
+            Request request=new Request.Builder()
+                    .url(apiUrl+"?cuid="+WMac+"&token="+AccessToken)
+                    .post(body)
+                    .header("Content-Type","audio/amr; rate=16000")//make sure there is a space before rate
+                    .build();
+            new OkHttpClient().newCall(request).enqueue(new Callback(){//发送异步请求
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    e.printStackTrace();
+                }
 
-                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                        if (response.isSuccessful()){
-                            ResultResponse rep=new Gson()
-                                    .fromJson(response.body().string(),ResultResponse.class);
-                            Message msg=new Message();
-                            msg.arg1=megArc;
-                            msg.obj=rep.result;
-                            responseHandler.sendMessage(msg);
-                        }
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    if (response.isSuccessful()){
+                        ResultResponse rep=new Gson()
+                                .fromJson(response.body().string(),ResultResponse.class);
+                        Message msg=new Message();
+                        msg.arg1=megArc;
+                        msg.obj=rep.result;
+                        responseHandler.sendMessage(msg);
                     }
-                });
-            }
+                }
+            });
         }).start();
     }
 

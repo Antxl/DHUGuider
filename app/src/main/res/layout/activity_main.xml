@@ -17,69 +17,72 @@
         app:tb_actionPadding="20dp"
         app:tb_centerGravity="center"
         app:tb_titleText="东华游"
-        app:tb_useThemeColor="true" />
+        app:tb_useThemeColor="true" >
 
-    <LinearLayout
-        android:id="@+id/searchbanner"
+    </com.xuexiang.xui.widget.actionbar.TitleBar>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:visibility="visible">
+        android:layout_height="match_parent">
 
-        <com.xuexiang.xui.widget.searchview.MaterialSearchView
-            android:id="@+id/search_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="14"
-            android:hint="在这里输入想去的地点吧"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/voice_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="3"
-            android:contentDescription="MIC_ICON"
-            android:src="@drawable/ic_baseline_mic_45"
-            android:visibility="gone" />
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_view">
-
-        <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-            android:id="@+id/bgimg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:src="@drawable/dhu" />
-
-        <com.xuexiang.xui.widget.button.ButtonView
-            style="@style/ButtonView.Blue"
+        <LinearLayout
+            android:id="@+id/searchbanner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="开启浏览模式"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/bgimg"
-            tools:layout_editor_absoluteX="0dp"
-            android:onClick="liulan"/>
+            android:alpha="1"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:visibility="visible">
 
-        <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
-            android:id="@+id/cam_btn"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="160dp"
-            android:background="@android:drawable/ic_menu_camera"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:sb_shape_type="round" />
+            <com.xuexiang.xui.widget.searchview.MaterialSearchView
+                android:id="@+id/search_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_weight="14"
+                android:hint="在这里输入想去的地点吧"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                android:id="@+id/voice_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="3"
+                android:contentDescription="MIC_ICON"
+                android:src="@drawable/ic_baseline_mic_45"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_view">
+
+            <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
+                android:id="@+id/bgimg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:src="@drawable/dhu"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+                android:id="@+id/cam_btn"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="160dp"
+                android:background="@android:drawable/ic_menu_camera"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:sb_shape_type="round" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
 
 </LinearLayout>
