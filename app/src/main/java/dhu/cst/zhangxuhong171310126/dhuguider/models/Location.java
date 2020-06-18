@@ -8,9 +8,9 @@ import lombok.Data;
 
 @Data
 public class Location implements Serializable {
-    private String name, description;
+    private String name;
     private PointF lowerBound,upperBound;
-    private int drawableResource;
+    private int drawableResource,descriptionResource;
 
     public PointF getCenterPF()
     {

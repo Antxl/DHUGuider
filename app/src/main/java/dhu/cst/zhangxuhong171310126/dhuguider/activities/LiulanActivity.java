@@ -44,7 +44,7 @@ public class LiulanActivity extends AppCompatActivity implements TextToSpeech.On
     private void bindResource(String name) {
         Location here= LocationResources.get(name);
         titleText.setText(here.getName());
-        introduce.setText(here.getDescription());
+        introduce.setText(here.getDescriptionResource());
         img.setImageResource(here.getDrawableResource());
     }
 

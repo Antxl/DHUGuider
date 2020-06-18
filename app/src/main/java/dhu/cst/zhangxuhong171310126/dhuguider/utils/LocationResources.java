@@ -1,7 +1,6 @@
 package dhu.cst.zhangxuhong171310126.dhuguider.utils;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.PointF;
 
 import java.util.Map;
@@ -27,14 +26,14 @@ public class LocationResources {
                         new PointF(1086, 987),
                         new PointF(647, 201)};
         int[] picR={R.drawable.xueyuanlou1,R.drawable.dhu1,R.drawable.tuwenzhongxin,R.drawable.beimeng};
-        SharedPreferences pref=context.getSharedPreferences("locationMapping",Context.MODE_PRIVATE);
+        int[] descriptions={R.string.yihaoxueyuanlou,R.string.donghuadadao,R.string.tuwenxinxizhongxin,R.string.beimen};
         resorts=new ConcurrentHashMap<>();
         for (int i=0;i<names.length;i++) {
             l=new Location();
             l.setLowerBound(lows[i]);
             l.setUpperBound(ups[i]);
             l.setName(names[i]);
-            l.setDescription(pref.getString(names[i],"资料暂缺"));
+            l.setDescriptionResource(descriptions[i]);
             l.setDrawableResource(picR[i]);
             resorts.put(names[i],l);
         }

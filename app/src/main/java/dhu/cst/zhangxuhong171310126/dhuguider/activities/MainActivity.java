@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -56,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
     TitleBar title;
     @BindView(R.id.searchbanner)
     LinearLayout banner;
+    @BindView(R.id.map_area)
+    FrameLayout root;
     private Recorder recorder;
     private BDSpeechToText stt;
     private String lastRecordName;
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     private PictureSelectionModel model;
     private BDPicSearchUtil util;
     private MiniLoadingDialog dialog;
+    private ImageView pointer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         lastRecordName=null;
         handler=new ResponseHandler();
         util=new BDPicSearchUtil();
+        pointer=null;
     }
 
     private void initComponents()
@@ -143,14 +149,18 @@ public class MainActivity extends AppCompatActivity {
         if (dialog.isLoading())
             dialog.dismiss();
         if (dest!=null){
+            final PointF target=dest.getCenterPF();
             map.animateCenter(dest.getCenterPF())
                     .withDuration(500)
                     .withOnAnimationEventListener(new SubsamplingScaleImageView.OnAnimationEventListener() {
                         @Override
                         public void onComplete() {
-                            ImageView pointer=new ImageView(MainActivity.this);
+                            if (pointer!=null)
+                                pointer.setVisibility(View.GONE);
+                            pointer=new ImageView(root.getContext());
                             pointer.setImageResource(R.drawable.ic_baseline_location_on_24);
-                            PointF dest=map.sourceToViewCoord(map.getCenter());
+                            PointF dest=map.sourceToViewCoord(target);
+                            root.addView(pointer,new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                             pointer.setX(dest.x);
                             pointer.setY(0);
                             pointer.animate()
@@ -166,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onInterruptedByNewAnim() {
                         }
-                    });
+                    }).start();
         }
         else
             Toast.makeText(this,"没有结果哦，可能这个地点还没收录呢",Toast.LENGTH_SHORT).show();
@@ -175,14 +185,20 @@ public class MainActivity extends AppCompatActivity {
     @OnTouch(R2.id.bgimg)
     boolean onMapTouched(View v,MotionEvent e)
     {
-        SubsamplingScaleImageView img=(SubsamplingScaleImageView)v;
-        PointF p=img.viewToSourceCoord(e.getX(),e.getY());
-        Location l=LocationResources.find(p);
-        if (l!=null){
-            Intent intent=new Intent(this,LiulanActivity.class);
-            intent.putExtra("location",l.getName());
-            startActivity(intent);
-            return true;
+        if (pointer!=null&&e.getAction()==MotionEvent.ACTION_DOWN) {
+            pointer.setVisibility(View.GONE);
+            pointer=null;
+        }
+        if (e.getAction()==MotionEvent.ACTION_UP){
+            SubsamplingScaleImageView img=(SubsamplingScaleImageView)v;
+            PointF p=img.viewToSourceCoord(e.getX(),e.getY());
+            Location l=LocationResources.find(p);
+            if (l!=null){
+                Intent intent=new Intent(this,LiulanActivity.class);
+                intent.putExtra("location",l.getName());
+                startActivity(intent);
+                return true;
+            }
         }
         return false;
     }
