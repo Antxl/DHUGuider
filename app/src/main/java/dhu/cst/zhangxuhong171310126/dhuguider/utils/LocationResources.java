@@ -18,6 +18,7 @@ public class LocationResources {
             return;
         Location l;
         String[] names = {"一号学院楼", "东华大道", "图文信息中心", "北门"};
+        String[] dirs={"西边","图文信息中心的北侧","校园中心","北端"};
         PointF[] lows = {new PointF(281, 1001),
                 new PointF(740, 669),
                 new PointF(708, 791), new PointF(562, 136)},
@@ -34,6 +35,7 @@ public class LocationResources {
             l.setUpperBound(ups[i]);
             l.setName(names[i]);
             l.setDescriptionResource(descriptions[i]);
+            l.setDirection(dirs[i]);
             l.setDrawableResource(picR[i]);
             resorts.put(names[i],l);
         }

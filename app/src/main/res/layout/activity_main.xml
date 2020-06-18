@@ -1,89 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activities.MainActivity">
+    android:layout_height="match_parent">
 
-    <com.xuexiang.xui.widget.actionbar.TitleBar
-        android:id="@+id/titlebar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tb_actionPadding="20dp"
-        app:tb_centerGravity="center"
-        app:tb_titleText="东华游"
-        app:tb_useThemeColor="true" >
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activities.MainActivity">
 
-    </com.xuexiang.xui.widget.actionbar.TitleBar>
-
-    <FrameLayout
-        android:id="@+id/map_area"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/searchbanner"
+        <com.xuexiang.xui.widget.actionbar.TitleBar
+            android:id="@+id/titlebar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="1"
-            android:background="#FFFFFF"
-            android:orientation="horizontal"
-            android:visibility="visible">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tb_actionPadding="20dp"
+            app:tb_centerGravity="center"
+            app:tb_titleText="东华游"
+            app:tb_useThemeColor="true">
 
-            <com.xuexiang.xui.widget.searchview.MaterialSearchView
-                android:id="@+id/search_view"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal|top"
-                android:layout_weight="14"
-                android:hint="在这里输入想去的地点吧"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        </com.xuexiang.xui.widget.actionbar.TitleBar>
 
-            <ImageButton
-                android:id="@+id/voice_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="3"
-                android:contentDescription="MIC_ICON"
-                android:src="@drawable/ic_baseline_mic_45"
-                android:visibility="gone" />
-        </LinearLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <FrameLayout
+            android:id="@+id/map_area"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_view">
+            android:layout_height="match_parent">
 
-            <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-                android:id="@+id/bgimg"
+            <LinearLayout
+                android:id="@+id/searchbanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="1"
+                android:background="#FFFFFF"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <com.xuexiang.xui.widget.searchview.MaterialSearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_weight="14"
+                    android:hint="在这里输入想去的地点吧"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/voice_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="3"
+                    android:contentDescription="MIC_ICON"
+                    android:src="@drawable/ic_baseline_mic_45"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:src="@drawable/dhu"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="0dp" />
+                app:layout_constraintTop_toBottomOf="@+id/search_view">
 
-            <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
-                android:id="@+id/cam_btn"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="160dp"
-                android:background="@drawable/ic_baseline_camera_alt_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:sb_shape_type="round" />
+                <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
+                    android:id="@+id/bgimg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:src="@drawable/dhu"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+                    android:id="@+id/cam_btn"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="160dp"
+                    android:background="@drawable/ic_baseline_camera_alt_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:sb_shape_type="round" />
 
-    </FrameLayout>
+                <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+                    android:id="@+id/que_btn"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="100dp"
+                    android:background="@drawable/ic_baseline_help_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:sb_shape_type="round" />
 
-</LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:background="@drawable/logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/logo"
+                android:text="DHUGuider"
+                android:textSize="35sp" />
+        </LinearLayout>
+
+        <com.coorchice.library.SuperTextView
+            android:id="@+id/group_member"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/info"
+            android:layout_gravity="center"
+            android:layout_margin="30dp"
+            android:text="\n      周欣宇  171310530\n      张旭宏  171310126"
+            android:textSize="17sp"
+            app:stv_corner="30dp"
+            app:stv_left_bottom_corner="true"
+            app:stv_left_top_corner="true"
+            app:stv_right_bottom_corner="true"
+            app:stv_right_top_corner="true"
+            app:stv_stroke_color="@color/skyblue"
+            app:stv_stroke_width="6dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/group_member"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/mylayout">
+
+            <TextView
+                android:id="@+id/introduction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="功能介绍: Click"
+                android:textSize="20sp" />
+
+
+            <com.xuexiang.xui.widget.button.ButtonView
+                android:id="@+id/btn1"
+                style="@style/ButtonView.Blue"
+                android:layout_width="90dp"
+                android:layout_height="28dp"
+                android:layout_below="@+id/introduction"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="click_btn1"
+                android:text="语音输入"
+                android:textSize="20sp"
+                app:textRadius="5dp"
+                app:textStrokeColor="@color/skyblue"
+                app:textStrokeWidth="2dp" />
+
+            <com.xuexiang.xui.widget.button.ButtonView
+                android:id="@+id/btn2"
+                style="@style/ButtonView.Blue"
+                android:layout_width="90dp"
+                android:layout_height="28dp"
+                android:layout_below="@+id/introduction"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toRightOf="@+id/btn1"
+                android:onClick="click_btn2"
+                android:text="图像识别"
+                android:textSize="20sp"
+                app:textRadius="5dp"
+                app:textStrokeColor="@color/skyblue"
+                app:textStrokeWidth="2dp" />
+
+            <com.xuexiang.xui.widget.button.ButtonView
+                android:id="@+id/btn3"
+                style="@style/ButtonView.Blue"
+                android:layout_width="90dp"
+                android:layout_height="28dp"
+                android:layout_below="@+id/btn1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="click_btn3"
+                android:text="简单问答"
+                android:textSize="20sp"
+                app:textRadius="5dp"
+                app:textStrokeColor="@color/skyblue"
+                app:textStrokeWidth="2dp" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 public class Location implements Serializable {
-    private String name;
+    private String name,direction;
     private PointF lowerBound,upperBound;
     private int drawableResource,descriptionResource;
 
